@@ -1,6 +1,7 @@
 require('rspec')
 require('contact')
 require('phone')
+require('email')
 
 describe(Contact) do
 
@@ -35,6 +36,15 @@ describe(Contact) do
       phone_number = Phone.new({:home_phone=>'503-867-5309', :cellphone=>'555-555-4444', :work_phone=>'603-123-4567'})
       person.add_phone(phone_number)
       expect(person.phone_number.home_phone).to(eq('503-867-5309'))
+    end
+  end
+
+  describe('#add_email') do
+    it('will add an email to the contact') do
+      person = Contact.new({:first_name=> "Jessica" , :last_name=> "Engel"})
+      email = Email.new({:work_email=> "steve@job.com", :personal_email=>"steve@fun.com"})
+      person.add_email(email)
+      expect(person.email.work_email).to(eq("steve@job.com"))
     end
   end
 
