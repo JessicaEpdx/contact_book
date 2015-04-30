@@ -1,5 +1,5 @@
 class Contact
-attr_reader(:first_name, :last_name, :phone_number, :email)
+attr_reader(:first_name, :last_name, :phone_number, :email, :address)
 @@contacts = []
 
   define_method(:initialize) do |attributes|
@@ -7,6 +7,7 @@ attr_reader(:first_name, :last_name, :phone_number, :email)
     @last_name = attributes.fetch(:last_name)
     @phone_number = {}
     @email = {}
+    @address ={}
   end
 
   define_method(:save) do
@@ -24,8 +25,13 @@ attr_reader(:first_name, :last_name, :phone_number, :email)
   define_method(:add_phone) do |phone_number|
     @phone_number = phone_number
   end
+
   define_method(:add_email) do |email|
     @email = email
+  end
+
+  define_method(:add_address) do |address|
+    @address = address
   end
 
 end

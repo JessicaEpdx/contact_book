@@ -2,6 +2,7 @@ require('rspec')
 require('contact')
 require('phone')
 require('email')
+require('address')
 
 describe(Contact) do
 
@@ -62,6 +63,18 @@ describe(Phone) do
       expect(person.home_phone).to(eq('503-867-5309'))
     end
   end
+end
 
-
+describe(Address) do
+  before() do
+    Address.clear()
+  end
+  describe('#home_address') do
+    it("returns contact's home address") do
+      person = Contact.new({:first_name=> "Jessica" , :last_name=> "Engel"})
+      address = Address.new({:home_address=> "1436 SE Clinton St Portland OR 97214", :work_address=> "3467 NE Broadway St Portland, OR 97202"})
+      person.add_address(address)
+      expect(person.address.home_address).to(eq("1436 SE Clinton St Portland OR 97214"))
+end
+end
 end
